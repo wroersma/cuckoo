@@ -60,6 +60,7 @@ The configuration file should follow the default structure::
     # specified ID you have to define a dedicated section containing the details
     # on the respective machine. (E.g. cuckoo1,cuckoo2,cuckoo3)
     machines = cuckoo1
+    dsn = qemu:///system
 
     [cuckoo1]
     # Specify the label name of the current machine as specified in your
@@ -105,6 +106,12 @@ this base class and specify your connection string, as in the example below:
     class MyMachinery(LibVirtMachinery):
         # Set connection string.
         dsn = "my:///connection"
+
+Starting with Cuckoo 2.0.7a1 you can use a custom dsn by setting it in the kvm.conf file.
+Example:
+
+    dsn = qemu+ssh://192.168.56.1/system
+
 
 This works for all the virtualization technologies supported by LibVirt. Just
 remember to check if your LibVirt package (if you are using one, for example
